@@ -1,4 +1,5 @@
 require("dotenv").config();
+const fs = require("fs").promises;
 const fetch = require("node-fetch");
 const key = process.env.API_KEY;
 let url = "https://api.meaningcloud.com/sentiment-2.1";
@@ -13,8 +14,16 @@ sentimentAnalysis = async (txt) => {
       `${url}?key=${key}&txt=${txt}&lang=en`,
       requestOptions
     );
-    result = await response.text();
-    return result
+    result = await response.json();
+    await fs.writeFile("data.json", JSON.stringify(result));
+    let { score_tag, agreement, subjectivity, confidence, irony } = result;
+    return {
+      score_tag,
+      agreement,
+      subjectivity,
+      confidence,
+      irony,
+    };
   } catch (error) {
     console.log("error", error);
   }

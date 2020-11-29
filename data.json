@@ -1,0 +1,454 @@
+{
+  "status": {
+    "code": "0",
+    "msg": "OK",
+    "credits": "1",
+    "remaining_credits": "19977"
+  },
+  "model": "general_en",
+  "score_tag": "P",
+  "agreement": "AGREEMENT",
+  "subjectivity": "OBJECTIVE",
+  "confidence": "100",
+  "irony": "NONIRONIC",
+  "sentence_list": [
+    {
+      "text": "Enjoyed staying:",
+      "inip": "0",
+      "endp": "15",
+      "bop": "y",
+      "confidence": "100",
+      "score_tag": "P",
+      "agreement": "AGREEMENT",
+      "segment_list": [
+        {
+          "text": "Enjoyed staying:",
+          "segment_type": "main",
+          "inip": "0",
+          "endp": "15",
+          "confidence": "100",
+          "score_tag": "P",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": [
+            {
+              "text": "enjoy@V",
+              "inip": "0",
+              "endp": "6",
+              "confidence": "100",
+              "score_tag": "P"
+            }
+          ]
+        }
+      ],
+      "sentimented_entity_list": [],
+      "sentimented_concept_list": []
+    },
+    {
+      "text": "location is great, not far from a subway station and only 15 minutes ride from all the sights.",
+      "inip": "17",
+      "endp": "110",
+      "bop": "n",
+      "confidence": "100",
+      "score_tag": "P+",
+      "agreement": "AGREEMENT",
+      "segment_list": [
+        {
+          "text": "location is great, not far from a subway station and only 15 minutes ride from all the sights",
+          "segment_type": "main",
+          "inip": "17",
+          "endp": "109",
+          "confidence": "100",
+          "score_tag": "P+",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": [
+            {
+              "text": "great",
+              "inip": "29",
+              "endp": "33",
+              "confidence": "100",
+              "score_tag": "P+",
+              "sentimented_concept_list": [
+                {
+                  "form": "location",
+                  "id": "3252fbffb9",
+                  "variant": "location",
+                  "inip": "17",
+                  "endp": "24",
+                  "type": "Top>Location>Address",
+                  "score_tag": "P+"
+                },
+                {
+                  "form": "location",
+                  "id": "61de8ad68b",
+                  "variant": "location",
+                  "inip": "17",
+                  "endp": "24",
+                  "type": "Top>Location",
+                  "score_tag": "P+"
+                },
+                {
+                  "form": "underground",
+                  "id": "30bb3ff4b0",
+                  "variant": "subway",
+                  "inip": "51",
+                  "endp": "56",
+                  "type": "Top>Product>Machine>Vehicle>Train",
+                  "score_tag": "P+"
+                },
+                {
+                  "form": "subway",
+                  "id": "89139252d3",
+                  "variant": "subway",
+                  "inip": "51",
+                  "endp": "56",
+                  "type": "Top>Location",
+                  "score_tag": "P+"
+                },
+                {
+                  "form": "station",
+                  "id": "dec0ba5572",
+                  "variant": "station",
+                  "inip": "58",
+                  "endp": "64",
+                  "type": "Top>Location>Facility>StationTop>Station",
+                  "score_tag": "P+"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sentimented_entity_list": [],
+      "sentimented_concept_list": [
+        {
+          "form": "underground",
+          "id": "30bb3ff4b0",
+          "type": "Top>Product>Machine>Vehicle>Train",
+          "score_tag": "P+"
+        },
+        {
+          "form": "location",
+          "id": "3252fbffb9",
+          "type": "Top>Location>Address",
+          "score_tag": "P+"
+        },
+        {
+          "form": "location",
+          "id": "61de8ad68b",
+          "type": "Top>Location",
+          "score_tag": "P+"
+        },
+        {
+          "form": "subway",
+          "id": "89139252d3",
+          "type": "Top>Location",
+          "score_tag": "P+"
+        },
+        {
+          "form": "station",
+          "id": "dec0ba5572",
+          "type": "Top>Location>Facility>StationTop>Station",
+          "score_tag": "P+"
+        }
+      ]
+    },
+    {
+      "text": "There are lots of restaurants and shops nearby.",
+      "inip": "112",
+      "endp": "158",
+      "bop": "n",
+      "confidence": "100",
+      "score_tag": "NONE",
+      "agreement": "AGREEMENT",
+      "segment_list": [
+        {
+          "text": "There are lots of restaurants",
+          "segment_type": "secondary",
+          "inip": "112",
+          "endp": "140",
+          "confidence": "100",
+          "score_tag": "NONE",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": [],
+          "sentimented_concept_list": [
+            {
+              "form": "restaurant",
+              "id": "4d5e117421",
+              "variant": "restaurants",
+              "inip": "130",
+              "endp": "140",
+              "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants",
+              "score_tag": "NONE"
+            }
+          ]
+        },
+        {
+          "text": "shops nearby",
+          "segment_type": "secondary",
+          "inip": "146",
+          "endp": "157",
+          "confidence": "100",
+          "score_tag": "NONE",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": []
+        }
+      ],
+      "sentimented_entity_list": [],
+      "sentimented_concept_list": [
+        {
+          "form": "restaurant",
+          "id": "4d5e117421",
+          "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants",
+          "score_tag": "NONE"
+        }
+      ]
+    },
+    {
+      "text": "Cheerful and welcoming atmosphere.",
+      "inip": "160",
+      "endp": "193",
+      "bop": "n",
+      "confidence": "100",
+      "score_tag": "P+",
+      "agreement": "AGREEMENT",
+      "segment_list": [
+        {
+          "text": "Cheerful and welcoming atmosphere",
+          "segment_type": "main",
+          "inip": "160",
+          "endp": "192",
+          "confidence": "100",
+          "score_tag": "P+",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": [
+            {
+              "text": "cheerful",
+              "inip": "160",
+              "endp": "167",
+              "confidence": "100",
+              "score_tag": "P+"
+            },
+            {
+              "text": "welcoming",
+              "inip": "173",
+              "endp": "181",
+              "confidence": "100",
+              "score_tag": "P"
+            }
+          ],
+          "sentimented_concept_list": [
+            {
+              "form": "atmosphere",
+              "id": "4f7c88dfc8",
+              "variant": "atmosphere",
+              "inip": "183",
+              "endp": "192",
+              "type": "Top>Location",
+              "score_tag": "NONE"
+            },
+            {
+              "form": "atmosphere",
+              "id": "6a0da9c425",
+              "variant": "atmosphere",
+              "inip": "183",
+              "endp": "192",
+              "type": "Top>Unit>WeightUnit",
+              "score_tag": "NONE"
+            }
+          ],
+          "segment_list": [
+            {
+              "text": "Cheerful and welcoming atmosphere",
+              "segment_type": "main",
+              "inip": "160",
+              "endp": "192",
+              "confidence": "100",
+              "score_tag": "P+",
+              "agreement": "AGREEMENT",
+              "polarity_term_list": [
+                {
+                  "text": "cheerful",
+                  "inip": "160",
+                  "endp": "167",
+                  "confidence": "100",
+                  "score_tag": "P+",
+                  "sentimented_concept_list": [
+                    {
+                      "form": "atmosphere",
+                      "id": "4f7c88dfc8",
+                      "variant": "atmosphere",
+                      "inip": "183",
+                      "endp": "192",
+                      "type": "Top>Location",
+                      "score_tag": "P+"
+                    },
+                    {
+                      "form": "atmosphere",
+                      "id": "6a0da9c425",
+                      "variant": "atmosphere",
+                      "inip": "183",
+                      "endp": "192",
+                      "type": "Top>Unit>WeightUnit",
+                      "score_tag": "P+"
+                    }
+                  ]
+                },
+                {
+                  "text": "welcoming",
+                  "inip": "173",
+                  "endp": "181",
+                  "confidence": "100",
+                  "score_tag": "P",
+                  "sentimented_concept_list": [
+                    {
+                      "form": "atmosphere",
+                      "id": "4f7c88dfc8",
+                      "variant": "atmosphere",
+                      "inip": "183",
+                      "endp": "192",
+                      "type": "Top>Location",
+                      "score_tag": "P"
+                    },
+                    {
+                      "form": "atmosphere",
+                      "id": "6a0da9c425",
+                      "variant": "atmosphere",
+                      "inip": "183",
+                      "endp": "192",
+                      "type": "Top>Unit>WeightUnit",
+                      "score_tag": "P"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sentimented_entity_list": [],
+      "sentimented_concept_list": [
+        {
+          "form": "atmosphere",
+          "id": "4f7c88dfc8",
+          "type": "Top>Location",
+          "score_tag": "P+"
+        },
+        {
+          "form": "atmosphere",
+          "id": "6a0da9c425",
+          "type": "Top>Unit>WeightUnit",
+          "score_tag": "P+"
+        }
+      ]
+    },
+    {
+      "text": "Thanks for the hospitality.",
+      "inip": "195",
+      "endp": "221",
+      "bop": "n",
+      "confidence": "100",
+      "score_tag": "P",
+      "agreement": "AGREEMENT",
+      "segment_list": [
+        {
+          "text": "Thanks for the hospitality",
+          "segment_type": "main",
+          "inip": "195",
+          "endp": "220",
+          "confidence": "100",
+          "score_tag": "P",
+          "agreement": "AGREEMENT",
+          "polarity_term_list": [
+            {
+              "text": "thanks for",
+              "inip": "195",
+              "endp": "204",
+              "confidence": "100",
+              "score_tag": "P"
+            },
+            {
+              "text": "hospitality",
+              "inip": "210",
+              "endp": "220",
+              "confidence": "100",
+              "score_tag": "P"
+            }
+          ],
+          "segment_list": [
+            {
+              "text": "for the hospitality",
+              "segment_type": "main",
+              "inip": "202",
+              "endp": "220",
+              "confidence": "100",
+              "score_tag": "P",
+              "agreement": "AGREEMENT",
+              "polarity_term_list": [
+                {
+                  "text": "hospitality",
+                  "inip": "210",
+                  "endp": "220",
+                  "confidence": "100",
+                  "score_tag": "P"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sentimented_entity_list": [],
+      "sentimented_concept_list": []
+    }
+  ],
+  "sentimented_entity_list": [],
+  "sentimented_concept_list": [
+    {
+      "form": "underground",
+      "id": "30bb3ff4b0",
+      "type": "Top>Product>Machine>Vehicle>Train",
+      "score_tag": "P+"
+    },
+    {
+      "form": "location",
+      "id": "3252fbffb9",
+      "type": "Top>Location>Address",
+      "score_tag": "P+"
+    },
+    {
+      "form": "restaurant",
+      "id": "4d5e117421",
+      "type": "Top>Organization>Company>ConsumerGoodsCompany>Discretionary>ConsumerServicesCompany>Restaurants",
+      "score_tag": "NONE"
+    },
+    {
+      "form": "atmosphere",
+      "id": "4f7c88dfc8",
+      "type": "Top>Location",
+      "score_tag": "P+"
+    },
+    {
+      "form": "location",
+      "id": "61de8ad68b",
+      "type": "Top>Location",
+      "score_tag": "P+"
+    },
+    {
+      "form": "atmosphere",
+      "id": "6a0da9c425",
+      "type": "Top>Unit>WeightUnit",
+      "score_tag": "P+"
+    },
+    {
+      "form": "subway",
+      "id": "89139252d3",
+      "type": "Top>Location",
+      "score_tag": "P+"
+    },
+    {
+      "form": "station",
+      "id": "dec0ba5572",
+      "type": "Top>Location>Facility>StationTop>Station",
+      "score_tag": "P+"
+    }
+  ]
+}

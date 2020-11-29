@@ -1,10 +1,11 @@
 console.log("Never Give Up Ahmed");
-let api = async () => {
-  let obj = {
-    name: "John",
-    txt: "Enjoyed staying: location is great, not far from a subway station and only 15 minutes ride from all the sights. There are lots of restaurants and shops nearby. Cheerful and welcoming atmosphere. Thanks for the hospitality.",
-  };
-
+var form = document.getElementById("form");
+var inputs = {
+  title: document.getElementById("title"),
+  txt: document.getElementById("txt"),
+};
+var resultsDiv = document.getElementById("results");
+let api = async (obj) => {
   let response = await fetch("/data", {
     method: "POST",
     headers: {
@@ -14,6 +15,18 @@ let api = async () => {
   });
 
   let result = await response.json();
-  console.log(result);
+  return result;
 };
-api()
+var handleSubmit = async (event) => {
+  debugger;
+  event.preventDefault();
+  let obj = {};
+  for (const id of ["title", "txt"]) {
+    obj[id] = inputs[id].value;
+  }
+  let results = await api(obj);
+  console.log(results)
+  resultsDiv.innerHTML = JSON.stringify(results);
+};
+
+form.addEventListener("submit", handleSubmit);
