@@ -30,8 +30,8 @@ sentimentAnalysis = async (txt) => {
   }
 };
 fakeData=async () => {
-  let { score_tag, agreement, subjectivity, confidence, irony } = jsonData;
-  return { score_tag, agreement, subjectivity, confidence, irony }
+  let { score_tag, subjectivity, confidence } = jsonData;
+  return { score_tag,  subjectivity, confidence }
 }
 //sentimentAnalysis(text)
 module.exports = fakeData;

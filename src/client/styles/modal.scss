@@ -1,0 +1,89 @@
+%button-shared {
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-position: 90% 50%;
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  padding-right: 35px;
+  margin: 20px;
+}
+#myBtn {
+  @extend %button-shared;
+  width: 125px;
+  background-color: #17a2b8;
+  background-image: url("../assets/images/analysis.png");
+}
+#analysis {
+  @extend %button-shared;
+  width: 200px;
+  background-color: #28a745;
+  background-image: url("../assets/images/text-search.png");
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  /* Modal Content */
+
+  .modal-content {
+    max-width: 800px;
+    border-radius: 15px;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    .modal-header {
+      padding: 2px 16px;
+      background-color: #5cb85c;
+      color: white;
+      font-weight: bolder;
+      font-style: oblique;
+    }
+    .modal-body {
+      padding: 2px 16px;
+      .form {
+        text-align: center;
+        input[type="text"],
+        textarea {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 8px;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    &:hover,
+    &:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

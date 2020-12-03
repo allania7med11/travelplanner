@@ -5,4 +5,5 @@ var inputs = {
 };
 var resultsDiv = document.getElementById("results");
 var tbody = document.getElementById("tbody");
-export { form, inputs, resultsDiv, tbody };
+var modal = document.getElementById("myModal");
+export { form, inputs, resultsDiv, tbody,modal };
