@@ -9,7 +9,7 @@ app.use(express.static("src/client"));
 app.post("/data", async function(req, res) {
   const { name, txt } = req.body;
   const results = await sentimentAnalysis(txt);
-  projectData = { name, txt, ...results };
+  projectData = [{ name, txt, ...results }];
   res.send(projectData);
 });
 let port = 8080;

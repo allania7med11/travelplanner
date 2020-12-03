@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Never Give Up Ahmed</h1>
     <main>
         <section>
             <form class="" id="form">
@@ -18,9 +17,31 @@
 
         <section>
             <strong>Form Results:</strong>
-            <div id="results"></div>
+            <div id="results">
+                <table id="history">
+                    <caption class="label">Weather History Search</caption>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Text</th>
+                            <th>Polarite</th>
+                            <th>Agreement</th>
+                            <th>Subjectivity</th>
+                            <th>confidence</th>
+                            <th>Irony</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody">
+                        <tr>
+                            <td colspan="3">there is no available data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
+    <script src="elements.js"></script>
+    <script src="help.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

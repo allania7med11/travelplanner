@@ -1,4 +1,5 @@
 require("dotenv").config();
+let jsonData = require('../../data.json');
 const fs = require("fs").promises;
 const fetch = require("node-fetch");
 const key = process.env.API_KEY;
@@ -28,5 +29,9 @@ sentimentAnalysis = async (txt) => {
     console.log("error", error);
   }
 };
+fakeData=async () => {
+  let { score_tag, agreement, subjectivity, confidence, irony } = jsonData;
+  return { score_tag, agreement, subjectivity, confidence, irony }
+}
 //sentimentAnalysis(text)
-module.exports = sentimentAnalysis;
+module.exports = fakeData;
