@@ -5,7 +5,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 let projectData = [];
-app.use(express.static("src/client"));
+app.use(express.static("dist"));
 app.post("/data", async function(req, res) {
   const { name, txt } = req.body;
   const results = await sentimentAnalysis(txt);
