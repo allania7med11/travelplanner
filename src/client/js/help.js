@@ -1,6 +1,6 @@
 import { tbody } from "./elements";
 let api = async (obj) => {
-  let response = await fetch("/data", {
+  let response = await fetch("/analysis", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -51,6 +51,7 @@ const gethtmlInfos = (arr) => {
   return rtn;
 };
 const updateDataFromServer = async (results) => {
+  debugger
   if (results.length > 0) {
     let displayInfo = getdisplayInfos(results);
     let htmlInfos = gethtmlInfos(displayInfo);

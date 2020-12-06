@@ -1,19 +1,39 @@
 const express = require("express");
 var bodyParser = require("body-parser");
-const sentimentAnalysis = require("./api");
+const dotenv = require("dotenv");
+dotenv.config();
+let { server } = process.env;
+let { analysis } = require(server + "/js/Analysis.js");
+let { api } = require(server + "/js/Api.js");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-let projectData = [];
-app.use(express.static("dist"));
-let testTitle="Title1"
-let text="Enjoyed staying: location is great, not far from a subway station and only 15 minutes ride from all the sights. There are lots of restaurants and shops nearby. Cheerful and welcoming atmosphere. Thanks for the hospitality."
-app.post("/data", async function(req, res) {
-  const { title, txt } = req.body;
-  const results = await sentimentAnalysis(txt);
-  projectData = [{ title:testTitle, txt:text, ...results }];
-  res.send(projectData);
+app.get("/analysis", async function(req, res) {
+  let rtn = analysis.getAnalysis();
+  res.send(rtn);
 });
+app.post("/analysis", async function(req, res) {
+  const { title, txt } = req.body;
+  try {
+    if(!title || !txt){
+      throw "data err"
+    }
+    const results = await api.post(txt);
+    if(results===false){
+      throw "results err"
+    }
+    let update=await analysis.update({ title, txt }, results);
+    if(update===false){
+      throw "update err"
+    }
+    res.status(201).send();
+  } catch (err) {
+    console.log(err);
+    res.status(500).send();
+  }
+});
+app.use(express.static("dist"));
+
 let port = 8080;
 app.listen(port, function() {
   console.log(`app listening on port ${port}!`);

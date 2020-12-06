@@ -11,7 +11,7 @@ sentimentAnalysis = async (txt) => {
     redirect: "follow",
   };
   try {
-    response = await fetch(
+    let response = await fetch(
       `${url}?key=${key}&txt=${txt}&lang=en`,
       requestOptions
     );
@@ -34,4 +34,4 @@ fakeData=async () => {
   return { score_tag,  subjectivity, confidence }
 }
 //sentimentAnalysis(text)
-module.exports = fakeData;
+module.exports = sentimentAnalysis;
