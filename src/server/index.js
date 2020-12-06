@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.get("/analysis", async function(req, res) {
-  let rtn = analysis.getAnalysis();
+  let rtn = await analysis.getAnalysis();
   res.send(rtn);
 });
 app.post("/analysis", async function(req, res) {
