@@ -38,10 +38,4 @@ class Analysis {
   }
 }
 let analysis = new Analysis();
-// console.log(analysis.update(analysis.inputs,analysis.results))
 module.exports = { analysis };
-// let test = async () => {
-//   let rtn = await analysis.getAnalysis()
-//   console.log({rtn})
-// }
-// test()

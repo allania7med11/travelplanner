@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node build.js && nodemon src/server/index.js",
     "debug": "node build.js && ndb src/server/index.js",
+    "start": "node build.js && node src/server/index.js",
     "dev": "webpack --watch --mode=development",
     "prod": "webpack --mode=production"
   },
