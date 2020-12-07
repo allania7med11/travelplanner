@@ -2,8 +2,23 @@ class Analysis {
   constructor(app) {
     this._data = {};
     this.app = app;
-    this._fields = ["title", "txt", "score_tag", "subjectivity", "confidence"];
-    this.$tbody = document.getElementById("tbody");
+    this._fields = [
+      "title",
+      "txt",
+      "score_tag",
+      "agreement",
+      "subjectivity",
+      "confidence",
+      "irony",
+    ];
+    this._display = {
+      score_tag: "Polarity",
+      agreement: "Agreement",
+      subjectivity: "Subjectivity",
+      confidence: "Confidence",
+      irony: "Irony",
+    };
+    this.$analysis = document.getElementById("analysis");
     this.updateRender();
   }
   clean(data) {
@@ -21,14 +36,36 @@ class Analysis {
   }
   render() {
     if (this.clean(this._data)) {
-      this.$tbody.innerHTML = "";
-      let arr = this._fields.map((field) => `<td>${this._data[field]}</td>`);
+      this.$analysis.innerHTML = "";
+      let arr = this._fields.slice(2).map(
+        (field) => `
+      <div class='card property'>
+          <div class='key'>
+            ${this._display[field]}
+          </div>
+          <div class='value'>
+            ${this._data[field]}
+          </div>
+      </div>
+      `
+      );
       let rtn = `
-      <tr>
+      <div class='row' >
+        <div class='card inputs'>
+          <div class='label title'>
+            ${this._data["title"]}
+          </div>
+          <div class='value'>
+            ${this._data["txt"]}
+          </div>
+        </div>
+      </div>
+      <div class='row' >
         ${arr.join("")}
-      </tr>
+      </div>
       `;
-      this.$tbody.innerHTML = rtn;
+      console.log({ rtn });
+      this.$analysis.innerHTML = rtn;
     }
   }
   async updateRender() {
