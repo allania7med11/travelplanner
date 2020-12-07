@@ -1,0 +1,29 @@
+%button-shared {
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-position: 90% 50%;
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  padding-right: 35px;
+  margin: 20px;
+}
+.form {
+  text-align: center;
+  .input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px;
+    border-radius: 5px;
+  }
+}
+#submit {
+  @extend %button-shared;
+  width: 200px;
+  background-color: #17a2b8;
+  background-image: url("../assets/images/text-search.png");
+}

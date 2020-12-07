@@ -14,7 +14,7 @@
   <body>
     <main class="app">
       <div class="title">Natural Language Processing</div>
-      <section class="formContainer">
+      <section class="modalContainer">
         <button id="myBtn">NEW NLP</button>
         <div id="myModal" class="modal">
           <!-- Modal content -->
@@ -28,6 +28,7 @@
                 <input
                   id="title"
                   type="text"
+                  class="input"
                   name="title"
                   value=""
                   placeholder="Title"
@@ -35,14 +36,15 @@
                 />
                 <textarea
                   id="txt"
+                  class="input"
                   name="txt"
                   placeholder="Put your text here..."
                   rows="10"
                   required
                 ></textarea>
                 <input
-                  type="submit"
                   id="submit"
+                  type="submit"
                   name=""
                   value="start analysis"
                 />
