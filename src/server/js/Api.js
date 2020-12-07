@@ -8,13 +8,11 @@ class Api {
   }
   async post(txt) {
     try {
-      let response = await fetch(
-        `${this.url}?key=${this.key}&txt=${txt}&lang=en`,
-        {
-          method: "POST",
-          redirect: "follow",
-        }
-      );
+      let url = encodeURI(`${this.url}?key=${this.key}&txt=${txt}&lang=en`);
+      let response = await fetch(url, {
+        method: "POST",
+        redirect: "follow",
+      });
       let results = await response.json();
       return results;
     } catch (error) {

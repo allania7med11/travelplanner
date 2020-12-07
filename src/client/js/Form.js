@@ -11,7 +11,6 @@ class Form {
   }
   async handleSubmit(event) {
     event.preventDefault();
-    debugger
     let obj = {};
     for (const id of this.fields) {
       obj[id] = this.$inputs[id].value;
