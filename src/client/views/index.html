@@ -1,74 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Roboto|Grenze Gotisch|Sansita Swashed"
-    />
-    <title>Natural Language Processing</title>
-  </head>
 
-  <body>
-    <main class="app">
-      <div class="title">Natural Language Processing</div>
-      <section class="modalContainer">
-        <button id="myBtn">NEW NLP</button>
-        <div id="myModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="close">&times;</span>
-              <h2>NLP FORM</h2>
-            </div>
-            <div class="modal-body">
-              <form class="form" id="form">
-                <input
-                  id="title"
-                  type="text"
-                  class="input"
-                  name="title"
-                  value=""
-                  placeholder="Title"
-                  required
-                />
-                <textarea
-                  id="txt"
-                  class="input"
-                  name="txt"
-                  placeholder="Put your text here..."
-                  rows="10"
-                  required
-                ></textarea>
-                <input
-                  id="submit"
-                  type="submit"
-                  name=""
-                  value="start analysis"
-                />
-              </form>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto|Grenze Gotisch|Sansita Swashed" />
+  <title>Natural Language Processing</title>
+</head>
+
+<body>
+  <main class="app">
+    <div class="title">Natural Language Processing</div>
+    <section class="modalContainer">
+      <button id="myBtn">NEW NLP</button>
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>NLP FORM</h2>
+          </div>
+          <div class="modal-body">
+            <form class="form" id="form">
+              <input id="title" type="text" class="input" name="title" value="" placeholder="Title" required />
+              <textarea id="txt" class="input" name="txt" placeholder="Put your text here..." rows="10"
+                required></textarea>
+              <input id="submit" type="submit" name="" value="start analysis" />
+            </form>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <div class="label title">NLP Results</div>
-        <div id="analysis" class="analysis">
-          
-        </div>
-      </section>
-    </main>
-    <script>
-      // Check that service workers are supported
-      if ('serviceWorker' in navigator) {
-          // Use the window load event to keep the page load performant
-          window.addEventListener('load', () => {
-              navigator.serviceWorker.register('/service-worker.js');
-          });
-      }
-     </script>
-  </body>
+    <section>
+      <div class="label title">NLP Results</div>
+      <div id="analysis" class="analysis">
+
+      </div>
+    </section>
+  </main>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js");
+      })
+    }
+  </script>
+</body>
+
 </html>

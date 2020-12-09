@@ -1,7 +1,7 @@
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -23,7 +23,12 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new WorkboxPlugin.GenerateSW(),
+    new CopyPlugin({
+      patterns: [
+        { from: "./src/client/sw.js", to: "" },
+      ],
+    }),
     new MiniCssExtractPlugin({ filename: "[name].css" }),
+    
   ],
 });
