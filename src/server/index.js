@@ -34,7 +34,7 @@ app.post("/analysis", async function(req, res) {
 });
 app.use(express.static("dist"));
 
-let port = 8080;
+let port = process.env.PORT || 8080;
 app.listen(port, function() {
   console.log(`app listening on port ${port}!`);
 });
