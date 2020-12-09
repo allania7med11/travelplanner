@@ -26,10 +26,10 @@ app.post("/analysis", async function(req, res) {
     if(update===false){
       throw "update err"
     }
-    res.status(201).send();
+    res.send({success:true});
   } catch (err) {
     console.log(err);
-    res.status(500).send();
+    res.send({success:false});
   }
 });
 app.use(express.static("dist"));

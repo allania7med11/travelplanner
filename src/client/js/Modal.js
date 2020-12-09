@@ -14,4 +14,4 @@ class Modal {
     this.$modal.style.display = "none";
   }
 }
-export { Modal };
+module.exports = { Modal };

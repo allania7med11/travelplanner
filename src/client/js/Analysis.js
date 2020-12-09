@@ -40,10 +40,10 @@ class Analysis {
       let arr = this._fields.slice(2).map(
         (field) => `
       <div class='card property'>
-          <div class='key'>
+          <div  class='key'>
             ${this._display[field]}
           </div>
-          <div class='value'>
+          <div id=${field} class='value'>
             ${this._data[field]}
           </div>
       </div>
@@ -52,10 +52,10 @@ class Analysis {
       let rtn = `
       <div class='row' >
         <div class='card inputs'>
-          <div class='label title'>
+          <div id='titleDisplay' class='label title'>
             ${this._data["title"]}
           </div>
-          <div class='value'>
+          <div id='txtDisplay'  class='value'>
             ${this._data["txt"]}
           </div>
         </div>
@@ -64,7 +64,6 @@ class Analysis {
         ${arr.join("")}
       </div>
       `;
-      console.log({ rtn });
       this.$analysis.innerHTML = rtn;
     }
   }
@@ -74,4 +73,4 @@ class Analysis {
     this.render();
   }
 }
-export { Analysis };
+module.exports = { Analysis };

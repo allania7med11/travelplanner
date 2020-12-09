@@ -1,7 +1,7 @@
-import { Modal } from "./Modal"
-import { Form } from "./Form"
-import { Api } from "./Api"
-import { Analysis } from "./Analysis"
+let { Modal } =require("./Modal")
+let { Form } =require("./Form")
+let { Api } =require("./Api")
+let { Analysis } =require("./Analysis")
 class App {
     constructor(){
         this.modal = new Modal(this)
@@ -10,4 +10,4 @@ class App {
         this.analysis = new Analysis(this)
     }
 }
-export { App };
+module.exports = { App };

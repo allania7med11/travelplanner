@@ -22,4 +22,4 @@ class Form {
     this.app.modal.hideModel();
   }
 }
-export { Form };
+module.exports = { Form };

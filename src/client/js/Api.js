@@ -19,7 +19,8 @@ class Api {
       },
       body: JSON.stringify(obj),
     });
-    return response.status == "201";
+    let results = await response.json();
+    return results.success;
   }
 }
-export { Api };
+module.exports = { Api };

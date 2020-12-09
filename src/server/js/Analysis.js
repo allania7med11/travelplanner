@@ -32,7 +32,6 @@ class Analysis {
       fs.writeFile(data + "/results.json", JSON.stringify(results));
       this.inputs = inputs;
       this.results = results;
-      console.log("run");
       return true;
     } catch (err) {
       console.log(err);
