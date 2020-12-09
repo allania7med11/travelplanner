@@ -1,1 +1,1 @@
-node build.js && node src/server/index.js
+npm i && node build.js && node src/server/index.js
