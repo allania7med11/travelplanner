@@ -13,3 +13,16 @@ this is a website application for extract the meaning of all kinds of unstructur
 ## License & copyright
 © Allani Ahmed, Full Stack Web Developer
 
+## Follow the instructions to start the project:
+1.npm install - to create node_module
+
+2.Build environment by
+npm run build-prod
+
+
+3.To start application run
+npm run start
+then open localhost:8080 to view application.
+
+4.To test run
+npm run test
