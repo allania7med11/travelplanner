@@ -28,7 +28,7 @@ workbox.precaching.cleanupOutdatedCaches()
 // -- Start of workboxExtensions --
 /* eslint-disable no-undef */
 if (workbox) {
-  console.log(`Yay! Workbox3 is loaded 🎉`)
+  console.log(`Yay! Workbox is loaded 🎉`)
 } else {
   console.log(`Boo! Workbox didn't load 😬`)
 }

@@ -1,1 +1,0 @@
-npm i && node build.js && node src/server/index.js
