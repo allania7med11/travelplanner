@@ -8,28 +8,25 @@ let { api } = require(server + "/js/Api.js");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.get("/analysis", async function(req, res) {
-  let rtn = await analysis.getAnalysis();
-  res.send(rtn);
-});
-app.post("/analysis", async function(req, res) {
-  const { title, txt } = req.body;
+// app.get("/analysis", async function(req, res) {
+//   let rtn = await analysis.getAnalysis();
+//   res.send(rtn);
+// });
+app.post("/trip", async function(req, res) {
+  debugger
+  const { place } = req.body;
   try {
-    if(!title || !txt){
+    if(!place){
       throw "data err"
     }
-    const results = await api.post(txt);
+    const results = await api.post(place);
     if(results===false){
       throw "results err"
     }
-    let update=await analysis.update({ title, txt }, results);
-    if(update===false){
-      throw "update err"
-    }
-    res.send({success:true});
+    res.send(results);
   } catch (err) {
     console.log(err);
-    res.send({success:false});
+    res.send({err:true});
   }
 });
 app.use(express.static("dist"));
