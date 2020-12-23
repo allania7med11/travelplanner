@@ -13,20 +13,20 @@ app.use(bodyParser.json());
 //   res.send(rtn);
 // });
 app.post("/trip", async function(req, res) {
-  debugger
-  const { place } = req.body;
+  debugger;
+  const { place, start_date, end_date } = req.body;
   try {
-    if(!place){
-      throw "data err"
+    if (!place || !start_date || !end_date) {
+      throw "data err";
     }
-    const results = await api.post(place);
-    if(results===false){
-      throw "results err"
+    const results = await api.post(place, start_date, end_date);
+    if (results === false) {
+      throw "results err";
     }
     res.send(results);
   } catch (err) {
     console.log(err);
-    res.send({err:true});
+    res.send({ err: true });
   }
 });
 app.use(express.static("dist"));

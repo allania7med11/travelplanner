@@ -8,7 +8,7 @@ class Api {
       username: "allania7med11",
     };
     this.weatherbit = {
-      url: "https://api.weatherbit.io/v2.0/current",
+      url: "https://api.weatherbit.io/v2.0/forecast/daily",
       key: process.env.weatherbit_key,
     };
     this.pixabay = {
@@ -30,13 +30,27 @@ class Api {
       return false;
     }
   }
-  async getWeather(lat, lon) {
+  async getWeather(lat, lon, start_date, end_date) {
+    debugger
+    let today = new Date();
+    let start = new Date(start_date);
+    let end = new Date(end_date);
+    let cvt = 1000 * 3600 * 24;
+    let days = Math.ceil((end.getTime() - today.getTime()) / cvt);
+    let daysToStart = Math.ceil((start.getTime() - today.getTime()) / cvt);
+    // To calculate the no. of days between two dates
     let { url, key } = this.weatherbit;
     try {
-      let fullUrl = encodeURI(`${url}?lat=${lat}&lon=${lon}&key=${key}`);
+      let fullUrl = encodeURI(
+        `${url}?lat=${lat}&lon=${lon}&key=${key}&days=${days}`
+      );
       let response = await fetch(fullUrl);
       let results = await response.json();
-      return results;
+      let data = results.data;
+      if (daysToStart > 0) {
+        data = data.slice(daysToStart);
+      }
+      return data;
     } catch (error) {
       console.log("error", error);
       return false;
@@ -54,10 +68,10 @@ class Api {
       return false;
     }
   }
-  async post(place) {
+  async post(place, start_date, end_date) {
     try {
       let { lat, lng } = await this.getCoordinates(place);
-      let weather = await this.getWeather(lat, lng);
+      let weather = await this.getWeather(lat, lng, start_date, end_date);
       let image = await this.getImage(place);
       return { weather, image };
     } catch (err) {
