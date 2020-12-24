@@ -7,7 +7,7 @@ class App {
         this.modal = new Modal(this)
         this.form = new Form(this)
         this.api = new Api(this)
-        this.analysis = new Analysis(this)
+        // this.analysis = new Analysis(this)
     }
 }
 module.exports = { App };

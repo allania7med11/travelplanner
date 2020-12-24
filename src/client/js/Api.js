@@ -1,6 +1,6 @@
 class Api {
   constructor() {
-    this.url = "/analysis";
+    this.url = "/trip";
   }
   async get() {
     let requestOptions = {
@@ -20,7 +20,7 @@ class Api {
       body: JSON.stringify(obj),
     });
     let results = await response.json();
-    return results.success;
+    return results;
   }
 }
 module.exports = { Api };
