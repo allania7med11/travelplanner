@@ -1,14 +1,16 @@
+let results =require("Data/results.json")
+
 class Api {
   constructor() {
     this.url = "/trip";
   }
   async get() {
-    let requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-    let response = await fetch(this.url, requestOptions);
-    let results = await response.json();
+    // let requestOptions = {
+    //   method: "GET",
+    //   redirect: "follow",
+    // };
+    // let response = await fetch(this.url, requestOptions);
+    // let results = await response.json();
     return results;
   }
   async post(obj) {

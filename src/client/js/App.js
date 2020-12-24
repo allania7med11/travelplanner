@@ -1,13 +1,13 @@
 let { Modal } =require("./Modal")
 let { Form } =require("./Form")
 let { Api } =require("./Api")
-let { Analysis } =require("./Analysis")
+let { Planning } =require("./Planning")
 class App {
     constructor(){
         this.modal = new Modal(this)
         this.form = new Form(this)
         this.api = new Api(this)
-        // this.analysis = new Analysis(this)
+        this.planning = new Planning(this)
     }
 }
 module.exports = { App };
