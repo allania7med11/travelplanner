@@ -12,6 +12,7 @@
 }
 .infos {
   @extend .card;
+  margin: 10px;
   background-color: rgba($color: white, $alpha: 0.8);
   display: flex;
   padding: 10px;

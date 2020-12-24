@@ -31,7 +31,7 @@ class Api {
     }
   }
   async getWeather(lat, lon, start_date, end_date) {
-    debugger
+    debugger;
     let today = new Date();
     let start = new Date(start_date);
     let end = new Date(end_date);
@@ -62,7 +62,7 @@ class Api {
       let fullUrl = encodeURI(`${url}?q=${place}&image_type=photo0&key=${key}`);
       let response = await fetch(fullUrl);
       let results = await response.json();
-      return results;
+      return results.hits[0].webformatURL;
     } catch (error) {
       console.log("error", error);
       return false;
@@ -72,8 +72,8 @@ class Api {
     try {
       let { lat, lng } = await this.getCoordinates(place);
       let weather = await this.getWeather(lat, lng, start_date, end_date);
-      let image = await this.getImage(place);
-      return { weather, image };
+      let image_url = await this.getImage(place);
+      return { place, start_date, end_date, image_url, weather };
     } catch (err) {
       console.log({ err });
     }

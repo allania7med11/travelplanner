@@ -22,10 +22,10 @@ class Form {
     let obj = this.getObj();
     let results = await this.app.api.post(obj);
     console.log({ results });
-    // if(results===true){
-    //   await this.app.analysis.updateRender();
-    // }
-    //this.app.modal.hideModel();
+    if(!results.err){
+      await this.app.planning.updateRender(results);
+    }
+    this.app.modal.hideModel();
   }
 }
 module.exports = { Form };
