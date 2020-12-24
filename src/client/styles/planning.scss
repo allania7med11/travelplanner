@@ -12,6 +12,7 @@
 }
 .infos {
   @extend .card;
+  justify-content: center;
   margin: 10px;
   background-color: rgba($color: white, $alpha: 0.8);
   display: flex;
@@ -41,4 +42,18 @@
       line-height: 200%;
     }
   }
+  .no_data {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    font-style: oblique;
+    line-height: 300%;
+    display: flex;
+  }
+}
+.chart {
+  @extend .card;
+  margin: 10px;
+  background-color: rgba($color: white, $alpha: 0.9);
+  padding: 10px;
 }

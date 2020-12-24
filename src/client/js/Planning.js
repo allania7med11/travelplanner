@@ -6,7 +6,7 @@ class Planning {
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details];
     this.$planning = document.getElementById("planning");
-    // this.updateRender();
+    this.render();
   }
   clean(data) {
     for (let field of this._fields) {
@@ -21,13 +21,10 @@ class Planning {
       this._data = results;
     }
   }
-  render() {
-    let rtn
-    if (this.clean(this._data)) {
-      this.$planning.innerHTML = "";
-      rtn = `
-      <div class="label title">Trip Planning Results</div>
-      <div class="infos">
+  cardHtml() {
+    return /* html */ `
+    <div class="label title">Trip Planning Results</div>
+    <div class="infos">
       <div class="image">
         <img 
           src="${this._data["image_url"]}" />
@@ -40,17 +37,61 @@ class Planning {
         }</div>
       </div>
     </div>
-      `;
+    <div class="chart">
+      <div id="myChart"></div>
+    </div>
+    `;
+  }
+  chartRender() {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: "line",
+
+      // The data for our dataset
+      data: {
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+        ],
+        datasets: [
+          {
+            label: "My First dataset",
+            backgroundColor: "rgb(255, 99, 132)",
+            borderColor: "rgb(255, 99, 132)",
+            data: [0, 10, 5, 2, 20, 30, 45],
+          },
+        ],
+      },
+
+      // Configuration options go here
+      options: {},
+    });
+  }
+  render() {
+    let rtn;
+    if (this.clean(this._data)) {
+      this.$planning.innerHTML = "";
+      rtn = this.cardHtml();
     } else {
       rtn = `
       <div class="infos">
-        <div class="details">
-          <div  class="name">No Data Available</div>
+        <div class="no_data">
+          No Data Available
         </div>
+      </div>
+      <div class="chart">
+        <canvas id="myChart"></canvas>
       </div>
       `;
     }
     this.$planning.innerHTML = rtn;
+    this.chartRender()
   }
   async updateRender(results) {
     this.update(results);
