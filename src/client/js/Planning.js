@@ -1,4 +1,3 @@
-let results = require("Data/results.json");
 class Planning {
   constructor(app) {
     this._data = {};
@@ -6,7 +5,7 @@ class Planning {
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details];
     this.$planning = document.getElementById("planning");
-    this.render();
+    this.updateRender();
   }
   clean(data) {
     for (let field of this._fields) {
@@ -21,13 +20,23 @@ class Planning {
       this._data = results;
     }
   }
+  Imagerror() {
+    let image= document.getElementById("infos_img");
+    image.onerror = () => {
+      image.onerror=null
+      image.src='/images/noimage.png'
+    }
+    image.src=this._data["image_url"]   
+  }
   cardHtml() {
     return /* html */ `
     <div class="label title">Trip Planning Results</div>
     <div class="infos">
       <div class="image">
         <img 
-          src="${this._data["image_url"]}" />
+          id="infos_img"
+          src="/images/loading.jpg"
+           />
       </div>
       <div class="details">
         <div  class="name">My trip to: ${this._data["place"]}</div>
@@ -38,7 +47,7 @@ class Planning {
       </div>
     </div>
     <div class="chart">
-      <div id="myChart"></div>
+      <canvas id="myChart"></canvas>
     </div>
     `;
   }
@@ -50,21 +59,19 @@ class Planning {
 
       // The data for our dataset
       data: {
-        labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-        ],
+        labels: this._data.weather.map((cv) => cv.valid_date),
         datasets: [
           {
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
-            data: [0, 10, 5, 2, 20, 30, 45],
+            label: "Maximum Temperature (Celcius)",
+            borderColor: "rgb(220,20,60)",
+            fill: false,
+            data: this._data.weather.map((cv) => cv.max_temp),
+          },
+          {
+            label: "Minimum Temperature (Celcius)",
+            borderColor: "rgb(0,255,255)",
+            fill: false,
+            data: this._data.weather.map((cv) => cv.min_temp),
           },
         ],
       },
@@ -91,9 +98,11 @@ class Planning {
       `;
     }
     this.$planning.innerHTML = rtn;
-    this.chartRender()
+    this.Imagerror();
+    this.chartRender();
   }
-  async updateRender(results) {
+  async updateRender() {
+    let results = await this.app.api.get();
     this.update(results);
     this.render();
   }

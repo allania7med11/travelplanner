@@ -50,7 +50,7 @@ class Api {
       if (daysToStart > 0) {
         data = data.slice(daysToStart);
       }
-      return data;
+      return data
     } catch (error) {
       console.log("error", error);
       return false;

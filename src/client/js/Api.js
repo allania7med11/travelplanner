@@ -15,7 +15,34 @@ class Api {
       place: "Kairouan",
       start_date: "2020-12-24",
       end_date: "2020-12-31",
-      image_url:"https://pixabay.com/get/54e5d4424251b10ff3d8992cc6213278123adaed4e5077497d287ed79649c4_640.jpg"
+      image_url:"https://pixabay.com/get/54e5d4424251b10ff3d8992cc6213278123adaed4e5077497d287ed79649c4_640.jpg",
+      weather:[
+        {
+          "valid_date": "2020-12-24",
+          "max_temp": 19.4,
+          "min_temp":15
+        },
+        {
+          "valid_date": "2020-12-25",
+          "max_temp": 18.6,
+          "min_temp":17
+        },
+        {
+          "valid_date": "2020-12-26",
+          "max_temp": 10.8,
+          "min_temp":2
+        },
+        {
+          "valid_date": "2020-12-27",
+          "max_temp": 14,
+          "min_temp":13
+        },
+        {
+          "valid_date": "2020-12-28",
+          "max_temp": 18.8,
+          "min_temp":10
+        }
+      ]
     };
     return results;
   }
