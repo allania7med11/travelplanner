@@ -10,6 +10,7 @@ class Api {
     this.weatherbit = {
       url: "https://api.weatherbit.io/v2.0/forecast/daily",
       key: process.env.weatherbit_key,
+      fields:["valid_date","max_temp","min_temp","precip"]
     };
     this.pixabay = {
       url: "https://pixabay.com/api",
@@ -31,7 +32,6 @@ class Api {
     }
   }
   async getWeather(lat, lon, start_date, end_date) {
-    debugger;
     let today = new Date();
     let start = new Date(start_date);
     let end = new Date(end_date);
@@ -39,7 +39,7 @@ class Api {
     let days = Math.ceil((end.getTime() - today.getTime()) / cvt);
     let daysToStart = Math.ceil((start.getTime() - today.getTime()) / cvt);
     // To calculate the no. of days between two dates
-    let { url, key } = this.weatherbit;
+    let { url, key, fields } = this.weatherbit;
     try {
       let fullUrl = encodeURI(
         `${url}?lat=${lat}&lon=${lon}&key=${key}&days=${days}`
@@ -50,7 +50,10 @@ class Api {
       if (daysToStart > 0) {
         data = data.slice(daysToStart);
       }
-      return data
+      return data.map(cv => fields.reduce((acc,field) => {
+        acc[field] = cv[field]
+        return acc
+      },{}))
     } catch (error) {
       console.log("error", error);
       return false;

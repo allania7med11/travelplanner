@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 //   res.send(rtn);
 // });
 app.post("/trip", async function(req, res) {
-  debugger;
   const { place, start_date, end_date } = req.body;
   try {
     if (!place || !start_date || !end_date) {

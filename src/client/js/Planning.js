@@ -21,12 +21,12 @@ class Planning {
     }
   }
   Imagerror() {
-    let image= document.getElementById("infos_img");
+    let image = document.getElementById("infos_img");
     image.onerror = () => {
-      image.onerror=null
-      image.src='/images/noimage.png'
-    }
-    image.src=this._data["image_url"]   
+      image.onerror = null;
+      image.src = "/images/noimage.png";
+    };
+    image.src = this._data["image_url"];
   }
   cardHtml() {
     return /* html */ `
@@ -51,9 +51,10 @@ class Planning {
     </div>
     `;
   }
-  chartRender() {
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var chart = new Chart(ctx, {
+  chartData() {
+    debugger
+    let obj = {};
+    obj.temp = {
       // The type of chart we want to create
       type: "line",
 
@@ -66,19 +67,46 @@ class Planning {
             borderColor: "rgb(220,20,60)",
             fill: false,
             data: this._data.weather.map((cv) => cv.max_temp),
+            type: "line",
           },
           {
             label: "Minimum Temperature (Celcius)",
             borderColor: "rgb(0,255,255)",
             fill: false,
             data: this._data.weather.map((cv) => cv.min_temp),
+            type: "line",
           },
         ],
       },
 
       // Configuration options go here
       options: {},
-    });
+    };
+    obj.prep = {
+      type: "bar",
+      data: {
+        labels: this._data.weather.map((cv) => cv.valid_date),
+        datasets: [
+          {
+            label: "Accumulated precipitation (mm)",
+            backgroundColor: "blue",
+            data: this._data.weather.map((cv) => cv.precip),
+          },
+        ],
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: "Accumulated precipitation (mm)",
+        },
+      },
+    };
+    return obj;
+  }
+  chartRender() {
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var chart = new Chart(ctx, this.chartData()["prep"]);
   }
   render() {
     let rtn;
