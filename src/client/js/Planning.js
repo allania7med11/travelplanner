@@ -3,7 +3,7 @@ class Planning {
     this._data = {};
     this.app = app;
     this._details = ["place", "start_date", "end_date"];
-    this._fields = ["image_url", ...this._details];
+    this._fields = ["image_url", ...this._details, "weather"];
     this.$planning = document.getElementById("planning");
     this.updateRender();
   }
@@ -52,7 +52,7 @@ class Planning {
     `;
   }
   chartData() {
-    debugger
+    debugger;
     let obj = {};
     obj.temp = {
       // The type of chart we want to create
@@ -129,8 +129,9 @@ class Planning {
     this.Imagerror();
     this.chartRender();
   }
-  async updateRender() {
-    let results = await this.app.api.get();
+  async updateRender(results) {
+   // let results = await this.app.api.get();
+    debugger
     this.update(results);
     this.render();
   }
