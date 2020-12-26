@@ -1,5 +1,7 @@
-class Planning {
+let { Charts } = require("./Charts");
+class Planning extends Charts {
   constructor(app) {
+    super();
     this._data = {};
     this.app = app;
     this._details = ["place", "start_date", "end_date"];
@@ -26,7 +28,6 @@ class Planning {
       image.onerror = null;
       image.src = "/images/noimage.png";
     };
-    image.src = this._data["image_url"];
   }
   cardHtml() {
     return /* html */ `
@@ -35,7 +36,7 @@ class Planning {
       <div class="image">
         <img 
           id="infos_img"
-          src="/images/loading.jpg"
+          src="${this._data["image_url"]}"
            />
       </div>
       <div class="details">
@@ -46,73 +47,27 @@ class Planning {
         }</div>
       </div>
     </div>
-    <div class="chart">
-      <canvas id="myChart"></canvas>
+    <div class="weather">
+      <select id="display" name="display">
+        <option value="temp">Temperature</option>
+        <option value="prep">Precipitation</option>
+        <option value="wind_spd">Wind</option>
+      </select>
+      <div id="chart" class="chart">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
     `;
-  }
-  chartData() {
-    debugger;
-    let obj = {};
-    obj.temp = {
-      // The type of chart we want to create
-      type: "line",
-
-      // The data for our dataset
-      data: {
-        labels: this._data.weather.map((cv) => cv.valid_date),
-        datasets: [
-          {
-            label: "Maximum Temperature (Celcius)",
-            borderColor: "rgb(220,20,60)",
-            fill: false,
-            data: this._data.weather.map((cv) => cv.max_temp),
-            type: "line",
-          },
-          {
-            label: "Minimum Temperature (Celcius)",
-            borderColor: "rgb(0,255,255)",
-            fill: false,
-            data: this._data.weather.map((cv) => cv.min_temp),
-            type: "line",
-          },
-        ],
-      },
-
-      // Configuration options go here
-      options: {},
-    };
-    obj.prep = {
-      type: "bar",
-      data: {
-        labels: this._data.weather.map((cv) => cv.valid_date),
-        datasets: [
-          {
-            label: "Accumulated precipitation (mm)",
-            backgroundColor: "blue",
-            data: this._data.weather.map((cv) => cv.precip),
-          },
-        ],
-      },
-      options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: "Accumulated precipitation (mm)",
-        },
-      },
-    };
-    return obj;
-  }
-  chartRender() {
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var chart = new Chart(ctx, this.chartData()["prep"]);
   }
   render() {
     let rtn;
     if (this.clean(this._data)) {
       this.$planning.innerHTML = "";
       rtn = this.cardHtml();
+      this.$planning.innerHTML = rtn;
+      this.Imagerror();
+      this.attachEvent();
+      this.chartRender();
     } else {
       rtn = `
       <div class="infos">
@@ -124,14 +79,11 @@ class Planning {
         <canvas id="myChart"></canvas>
       </div>
       `;
+      this.$planning.innerHTML = rtn;
     }
-    this.$planning.innerHTML = rtn;
-    this.Imagerror();
-    this.chartRender();
   }
-  async updateRender(results) {
-   // let results = await this.app.api.get();
-    debugger
+  async updateRender() {
+    let results = await this.app.api.get();
     this.update(results);
     this.render();
   }

@@ -54,11 +54,24 @@
     display: flex;
   }
 }
-.chart {
+.weather {
   @extend .card;
+  select {
+    background-color: rgba($color: white, $alpha: 0.9);
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
   margin: 10px;
   background-color: rgba($color: white, $alpha: 0.9);
   padding: 10px;
-  display: flex;
-  justify-content: center;
+  .chart{
+    display: flex;
+    justify-content: center;
+  }
 }

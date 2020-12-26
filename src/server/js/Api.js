@@ -10,7 +10,7 @@ class Api {
     this.weatherbit = {
       url: "https://api.weatherbit.io/v2.0/forecast/daily",
       key: process.env.weatherbit_key,
-      fields:["valid_date","max_temp","min_temp","precip"]
+      fields:["valid_date","max_temp","min_temp","precip","wind_spd"]
     };
     this.pixabay = {
       url: "https://pixabay.com/api",
