@@ -6,11 +6,11 @@ let { Storage } =require("./Storage")
 let { Table } =require("./Table")
 class App {
     constructor(){
+        this.api = new Api(this)
+        this.storage = new Storage(this)
         this.modal = new Modal(this)
         this.form = new Form(this)
-        this.api = new Api(this)
         this.planning = new Planning(this)
-        this.storage = new Storage(this)
         this.table = new Table(this)
     }
 }

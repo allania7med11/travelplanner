@@ -9,7 +9,10 @@ class Planning  {
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details, "weather"];
     this.$planning = document.getElementById("planning");
-    this.updateRender();
+    let trips = this.app.storage.getall()
+    if(trips.length>0){
+      this.updateRender(trips[0]);
+    }
   }
   clean(data) {
     for (let field of this._fields) {
@@ -54,8 +57,7 @@ class Planning  {
       this.$planning.innerHTML = rtn;
     }
   }
-  async updateRender() {
-    let results = await this.app.api.get();
+  async updateRender(results) {
     this.update(results);
     this.render();
   }

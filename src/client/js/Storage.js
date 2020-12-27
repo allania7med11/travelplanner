@@ -7,33 +7,42 @@ class Storage {
       local = JSON.stringify(storageTest);
       window.localStorage.setItem("trips", local);
     }
-    this.storage = JSON.parse(local);
+    //this.storage = JSON.parse(local);
+    this.storage = storageTest;
   }
-  state({ start_date, end_date }) {
-    debugger
+  getState({ start_date, end_date }) {
+    debugger;
     let today = new Date();
     let start = new Date(start_date);
     let end = new Date(end_date);
     let cvt = 1000 * 3600 * 24;
+    let state, color;
     if (start.getTime() - today.getTime() > 0) {
       let days = Math.ceil((start.getTime() - today.getTime()) / cvt);
-      if(days === 1){
-        return "one day to start"
+      color = "green";
+      if (days === 1) {
+        state = "one day to start";
+      } else {
+        state = `${days} days to start`;
       }
-      return `${days} days to start`;
     } else if (end.getTime() - today.getTime() > 0) {
+      color = "orange";
       let days = Math.ceil((today.getTime() - start.getTime()) / cvt);
-      if(days === 1){
-        return "started one day ago"
+      if (days === 1) {
+        state = "started one day ago";
+      } else {
+        state = `started ${days} days ago`;
       }
-      return `started ${days} days ago`;
     } else {
-      let days = Math.ceil((end.getTime() - today.getTime()) / cvt);
-      if(days === 1){
-        return "finished one day ago"
+      color = "red";
+      let days = Math.ceil((today.getTime() - end.getTime()) / cvt);
+      if (days === 1) {
+        state = "finished one day ago";
+      } else {
+        state = `finished ${days} days ago`;
       }
-      return `finished ${days} days ago`;
     }
+    return { state, color };
   }
   create(obj) {
     this.storage.id = this.storage.id + 1;
@@ -46,16 +55,17 @@ class Storage {
       (ky1, ky2) => parseInt(ky2) - parseInt(ky1)
     );
     let lst = keys.map((key) => ({
-      state: this.state(this.storage.data[key]),
+      id:key,
       ...this.storage.data[key],
+      ...this.getState(this.storage.data[key]),
     }));
     return lst;
   }
   get(id) {
     let trip = this.storage.data[id];
     return {
-      state: this.state(trip),
       ...trip,
+      ...this.getState(trip)
     };
   }
   update(id, obj) {
