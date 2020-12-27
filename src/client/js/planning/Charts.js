@@ -1,5 +1,6 @@
 class Charts {
-  constructor() {
+  constructor(planning) {
+    this.planning = planning
     this.display = "temp";
   }
   attachEvent() {
@@ -13,6 +14,7 @@ class Charts {
     };
   }
   chartData() {
+    let weather = this.planning._data.weather
     let obj = {};
     obj.temp = {
       // The type of chart we want to create
@@ -20,20 +22,20 @@ class Charts {
 
       // The data for our dataset
       data: {
-        labels: this._data.weather.map((cv) => cv.valid_date),
+        labels: weather.map((cv) => cv.valid_date),
         datasets: [
           {
             label: "Maximum Temperature (Celcius)",
             borderColor: "rgb(220,20,60)",
             fill: false,
-            data: this._data.weather.map((cv) => cv.max_temp),
+            data: weather.map((cv) => cv.max_temp),
             type: "line",
           },
           {
             label: "Minimum Temperature (Celcius)",
             borderColor: "rgb(0,255,255)",
             fill: false,
-            data: this._data.weather.map((cv) => cv.min_temp),
+            data: weather.map((cv) => cv.min_temp),
             type: "line",
           },
         ],
@@ -45,12 +47,12 @@ class Charts {
     obj.prep = {
       type: "bar",
       data: {
-        labels: this._data.weather.map((cv) => cv.valid_date),
+        labels: weather.map((cv) => cv.valid_date),
         datasets: [
           {
             label: "Accumulated precipitation (mm)",
             backgroundColor: "blue",
-            data: this._data.weather.map((cv) => cv.precip),
+            data: weather.map((cv) => cv.precip),
           },
         ],
       },
@@ -68,13 +70,13 @@ class Charts {
 
       // The data for our dataset
       data: {
-        labels: this._data.weather.map((cv) => cv.valid_date),
+        labels: weather.map((cv) => cv.valid_date),
         datasets: [
           {
             label: "Wind speed  (m/s)",
             borderColor: "rgb(243,126,48)",
             fill: false,
-            data: this._data.weather.map((cv) => cv.wind_spd),
+            data: weather.map((cv) => cv.wind_spd),
             type: "line",
           }
         ],
@@ -85,7 +87,21 @@ class Charts {
     };
     return obj;
   }
-  chartRender() {
+  html(){
+    return /* html */ `
+      <div class="weather">
+        <select id="display" name="display">
+          <option value="temp">Temperature</option>
+          <option value="prep">Precipitation</option>
+          <option value="wind_spd">Wind</option>
+        </select>
+        <div id="chart" class="chart">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      `
+  }
+  render() {
     var ctx = document.getElementById("myChart").getContext("2d");
     var chart = new Chart(ctx, this.chartData()[this.display]);
   }

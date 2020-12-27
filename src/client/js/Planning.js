@@ -1,9 +1,11 @@
-let { Charts } = require("./Charts");
-class Planning extends Charts {
+let { Infos } = require("./planning/Infos");
+let { Charts } = require("./planning/Charts");
+class Planning  {
   constructor(app) {
-    super();
     this._data = {};
     this.app = app;
+    this.info = new Infos(this)
+    this.chart = new Charts(this)
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details, "weather"];
     this.$planning = document.getElementById("planning");
@@ -22,52 +24,22 @@ class Planning extends Charts {
       this._data = results;
     }
   }
-  Imagerror() {
-    let image = document.getElementById("infos_img");
-    image.onerror = () => {
-      image.onerror = null;
-      image.src = "/images/noimage.png";
-    };
-  }
-  cardHtml() {
+  html() {
     return /* html */ `
-    <div class="label title">Trip Planning Results</div>
-    <div class="infos">
-      <div class="image">
-        <img 
-          id="infos_img"
-          src="${this._data["image_url"]}"
-           />
-      </div>
-      <div class="details">
-        <div  class="name">My trip to: ${this._data["place"]}</div>
-        <div  class="time">Departing: ${this._data["start_date"]}</div>
-        <div id="planning_end_date" class="time">Ending: ${
-          this._data["end_date"]
-        }</div>
-      </div>
-    </div>
-    <div class="weather">
-      <select id="display" name="display">
-        <option value="temp">Temperature</option>
-        <option value="prep">Precipitation</option>
-        <option value="wind_spd">Wind</option>
-      </select>
-      <div id="chart" class="chart">
-        <canvas id="myChart"></canvas>
-      </div>
-    </div>
+      <div class="label title">Trip Planning Results</div>
+      ${this.info.html()}
+      ${this.chart.html()}
     `;
   }
   render() {
     let rtn;
     if (this.clean(this._data)) {
       this.$planning.innerHTML = "";
-      rtn = this.cardHtml();
+      rtn = this.html();
       this.$planning.innerHTML = rtn;
-      this.Imagerror();
-      this.attachEvent();
-      this.chartRender();
+      this.infos.imagError();
+      this.chart.attachEvent();
+      this.chart.render();
     } else {
       rtn = `
       <div class="infos">
