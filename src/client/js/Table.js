@@ -6,6 +6,12 @@ class Table {
     this.render();
   }
   html() {
+    if(this.data.length===0){
+      return /* html */`
+            <tr>
+              <td colspan="3">no trips available</td>
+            </tr>`
+    }
     let trips = this.data.map(
       (trip) => /* html */ `
         <tr>
@@ -14,7 +20,8 @@ class Table {
                 ${trip.state}
             </td>
             <td>
-            <button class="view" data-id="${trip.id}">view</button>
+            <button class="view" data-id="${trip.id}"></button>
+            <button class="delete" data-id="${trip.id}"></button>
             </td>
         </tr>
         `
@@ -29,6 +36,15 @@ class Table {
         let id = event.target.getAttribute("data-id");
         let results=this.app.storage.get(id)
         this.app.planning.updateRender(results)
+      })
+    );
+    let deletes = document.querySelectorAll(".delete");
+    deletes.forEach((el) =>
+      el.addEventListener("click", (event) => {
+        console.log(event.target.getAttribute("data-id"));
+        let id = event.target.getAttribute("data-id");
+        this.app.storage.delete(id)
+        this.render()
       })
     );
   }

@@ -1,3 +1,26 @@
+%button-shared {
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 60%;
+  margin: 1px 5px;
+}
+.view {
+  @extend %button-shared;
+  background-color: green;
+  background-image: url("../assets/images/eye-solid.png");
+}
+.delete {
+  @extend %button-shared;
+  background-color: red;
+  background-image: url("../assets/images/trash-alt-solid.png");
+}
 #trips {
   min-width: 80vw;
   font-family: Arial, Helvetica, sans-serif;

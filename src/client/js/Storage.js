@@ -7,11 +7,10 @@ class Storage {
       local = JSON.stringify(storageTest);
       window.localStorage.setItem("trips", local);
     }
-    //this.storage = JSON.parse(local);
+    this.storage = JSON.parse(local);
     this.storage = storageTest;
   }
   getState({ start_date, end_date }) {
-    debugger;
     let today = new Date();
     let start = new Date(start_date);
     let end = new Date(end_date);
