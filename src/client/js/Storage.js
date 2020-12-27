@@ -18,7 +18,7 @@ class Storage {
   }
   getall() {
     let keys = Object.keys(this.storage.data).sort(
-      (ky1, ky2) => parseInt(ky1) - parseInt(ky2)
+      (ky1, ky2) => parseInt(ky2) - parseInt(ky1)
     );
     let lst=keys.map(cv => this.storage.data[cv])
     return lst
@@ -35,3 +35,4 @@ class Storage {
     window.localStorage.setItem("trips", JSON.stringify(this.storage));
   }
 }
+module.exports = { Storage };

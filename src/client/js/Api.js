@@ -10,7 +10,7 @@ class Api {
       start_date:"2020-12-26",
       end_date: "2020-12-31"
     }
-    let results = await this.post(obj);
+   // let results = await this.post(obj);
     console.log({results})
     return results;
   }

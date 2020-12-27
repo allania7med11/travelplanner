@@ -4,8 +4,8 @@ class Planning  {
   constructor(app) {
     this._data = {};
     this.app = app;
-    this.info = new Infos(this)
-    this.chart = new Charts(this)
+    this.infos = new Infos(this)
+    this.charts = new Charts(this)
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details, "weather"];
     this.$planning = document.getElementById("planning");
@@ -27,8 +27,8 @@ class Planning  {
   html() {
     return /* html */ `
       <div class="label title">Trip Planning Results</div>
-      ${this.info.html()}
-      ${this.chart.html()}
+      ${this.infos.html()}
+      ${this.charts.html()}
     `;
   }
   render() {
@@ -38,8 +38,8 @@ class Planning  {
       rtn = this.html();
       this.$planning.innerHTML = rtn;
       this.infos.imagError();
-      this.chart.attachEvent();
-      this.chart.render();
+      this.charts.attachEvent();
+      this.charts.render();
     } else {
       rtn = `
       <div class="infos">

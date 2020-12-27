@@ -10,7 +10,7 @@ class Charts {
       chart.innerHTML = ""
       this.display = evt.target.value;
       chart.innerHTML = '<canvas id="myChart"></canvas>'
-      this.chartRender()
+      this.render()
     };
   }
   chartData() {
