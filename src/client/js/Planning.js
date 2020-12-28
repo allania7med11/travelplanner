@@ -1,16 +1,16 @@
 let { Infos } = require("./planning/Infos");
 let { Charts } = require("./planning/Charts");
-class Planning  {
+class Planning {
   constructor(app) {
     this._data = {};
     this.app = app;
-    this.infos = new Infos(this)
-    this.charts = new Charts(this)
+    this.infos = new Infos(this);
+    this.charts = new Charts(this);
     this._details = ["place", "start_date", "end_date"];
     this._fields = ["image_url", ...this._details, "weather"];
     this.$planning = document.getElementById("planning");
-    let trips = this.app.storage.getall()
-    if(trips.length>0){
+    let trips = this.app.storage.getall();
+    if (trips.length > 0) {
       this.updateRender(trips[0]);
     }
   }
@@ -22,9 +22,23 @@ class Planning  {
     }
     return true;
   }
+  save() {
+    if (this._data["notsaved"] === true) {
+      this._data["notsaved"] = false;
+      let obj = this._fields.reduce((acc, cv) => {
+        acc[cv] = this._data[cv];
+        return acc;
+      }, {});
+      this.app.storage.create(obj);
+      this._data["notsaved"] = false;
+      this.app.table.render();
+      this.updateRender(this._data);
+    }
+  }
   update(results) {
     if (this.clean(results)) {
       this._data = results;
+      this.charts.display = "temp"; 
     }
   }
   html() {
@@ -40,8 +54,8 @@ class Planning  {
       this.$planning.innerHTML = "";
       rtn = this.html();
       this.$planning.innerHTML = rtn;
-      this.infos.imagError();
-      this.charts.attachEvent();
+      this.infos.event();
+      this.charts.event();
       this.charts.render();
     } else {
       rtn = `

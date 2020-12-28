@@ -3,7 +3,7 @@ class Charts {
     this.planning = planning
     this.display = "temp";
   }
-  attachEvent() {
+  event() {
     let select = document.getElementById("display");
     let chart = document.getElementById("chart");
     select.onchange = (evt) => {

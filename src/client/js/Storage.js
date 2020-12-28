@@ -8,7 +8,7 @@ class Storage {
       window.localStorage.setItem("trips", local);
     }
     this.storage = JSON.parse(local);
-    this.storage = storageTest;
+    //this.storage = storageTest;
   }
   getState({ start_date, end_date }) {
     let today = new Date();
@@ -19,29 +19,38 @@ class Storage {
     if (start.getTime() - today.getTime() > 0) {
       let days = Math.ceil((start.getTime() - today.getTime()) / cvt);
       color = "green";
-      if (days === 1) {
+      if (days === 0) {
+        state = "less than one day to start";
+      } else if (days === 1) {
         state = "one day to start";
       } else {
         state = `${days} days to start`;
       }
     } else if (end.getTime() - today.getTime() > 0) {
       color = "orange";
-      let days = Math.ceil((today.getTime() - start.getTime()) / cvt);
-      if (days === 1) {
+      let days = Math.floor((today.getTime() - start.getTime()) / cvt);
+      if (days === 0) {
+        state = "started less than one day ago";
+      } else if (days === 1) {
         state = "started one day ago";
       } else {
         state = `started ${days} days ago`;
       }
     } else {
       color = "red";
-      let days = Math.ceil((today.getTime() - end.getTime()) / cvt);
-      if (days === 1) {
+      let days = Math.floor((today.getTime() - end.getTime()) / cvt);
+      if (days === 0) {
+        state = "finished less than one day ago";
+      } else if (days === 1) {
         state = "finished one day ago";
       } else {
         state = `finished ${days} days ago`;
       }
     }
     return { state, color };
+  }
+  getNewTrip(obj) {
+    return { ...obj, ...this.getState(obj), notsaved: true };
   }
   create(obj) {
     this.storage.id = this.storage.id + 1;
@@ -54,7 +63,7 @@ class Storage {
       (ky1, ky2) => parseInt(ky2) - parseInt(ky1)
     );
     let lst = keys.map((key) => ({
-      id:key,
+      id: key,
       ...this.storage.data[key],
       ...this.getState(this.storage.data[key]),
     }));
@@ -64,12 +73,8 @@ class Storage {
     let trip = this.storage.data[id];
     return {
       ...trip,
-      ...this.getState(trip)
+      ...this.getState(trip),
     };
-  }
-  update(id, obj) {
-    this.storage.data[id] = obj;
-    window.localStorage.setItem("trips", JSON.stringify(this.storage));
   }
   delete(id) {
     delete this.storage.data[id];

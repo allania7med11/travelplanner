@@ -23,7 +23,8 @@ class Form {
     let results = await this.app.api.post(obj);
     console.log({ results });
     if(!results.err){
-      await this.app.planning.updateRender(results);
+      let newTrip = this.app.storage.getNewTrip(results)
+      await this.app.planning.updateRender(newTrip);
     }
     this.app.modal.hideModel();
   }
