@@ -11,7 +11,7 @@ class Infos {
     let save = document.querySelectorAll("#save");
     if (save.length > 0) {
       save[0].addEventListener("click", (event) => {
-        debugger
+        
         this.planning.save();
       });
     }
