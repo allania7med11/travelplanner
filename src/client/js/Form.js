@@ -14,14 +14,12 @@ class Form {
       acc[cv] = this.$inputs[cv].value;
       return acc
     }, {});
-    console.log({obj})
     return obj;
   }
   async handleSubmit(event) {
     event.preventDefault();
     let obj = this.getObj();
     let results = await this.app.api.post(obj);
-    console.log({ results });
     if(!results.err){
       let newTrip = this.app.storage.getNewTrip(results)
       await this.app.planning.updateRender(newTrip);

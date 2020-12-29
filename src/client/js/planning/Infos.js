@@ -27,10 +27,10 @@ class Infos {
            />
       </div>
       <div class="details">
-        <div  class="name">My trip to: ${data["place"]}</div>
-        <div  class="time">Departing: ${data["start_date"]}</div>
-        <div  class="time">Ending: ${data["end_date"]}</div>
-        <div  class="time">State: ${data["state"]}</div>
+        <div  class="name">My trip to: <span id="dt-place">${data["place"]}</span></div>
+        <div  class="time">Departing: <span id="dt-start_date">${data["start_date"]}</span></div>
+        <div  class="time">Ending: <span id="dt-end_date">${data["end_date"]}</span></div>
+        <div  class="time">State: <span id="dt-state">${data["state"]}</span></div>
         ${
           data["notsaved"] === true
             ? "<div><button class='save' id='save'>save trip</button></div>"

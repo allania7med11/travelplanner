@@ -102,8 +102,11 @@ class Charts {
       `
   }
   render() {
-    var ctx = document.getElementById("myChart").getContext("2d");
-    var chart = new Chart(ctx, this.chartData()[this.display]);
+    let dom = document.getElementById("myChart");
+    if(typeof(dom) != 'undefined' && dom != null){
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var chart = new Chart(ctx, this.chartData()[this.display]);
+    }
   }
 }
 module.exports = { Charts };

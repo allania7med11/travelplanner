@@ -1,4 +1,4 @@
-let results = require("Data/results.json");
+let results = require("../data/results.json");
 
 class Api {
   constructor() {
@@ -11,7 +11,6 @@ class Api {
       end_date: "2020-12-31"
     }
    // let results = await this.post(obj);
-    console.log({results})
     return results;
   }
   async post(obj) {

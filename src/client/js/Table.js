@@ -32,7 +32,6 @@ class Table {
     let views = document.querySelectorAll(".view");
     views.forEach((el) =>
       el.addEventListener("click", (event) => {
-        console.log(event.target.getAttribute("data-id"));
         let id = event.target.getAttribute("data-id");
         let results=this.app.storage.get(id)
         this.app.planning.updateRender(results)
@@ -41,7 +40,6 @@ class Table {
     let deletes = document.querySelectorAll(".delete");
     deletes.forEach((el) =>
       el.addEventListener("click", (event) => {
-        console.log(event.target.getAttribute("data-id"));
         let id = event.target.getAttribute("data-id");
         this.app.storage.delete(id)
         this.render()
@@ -51,7 +49,6 @@ class Table {
   render() {
     this.$tbody.innerHTML = "";
     this.data = this.app.storage.getall();
-    console.log("test", this.data);
     this.$tbody.innerHTML = this.html();
     this.event();
   }

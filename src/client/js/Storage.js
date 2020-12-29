@@ -1,5 +1,4 @@
-let storageTest = require("Data/storage.json");
-console.log({ storageTest });
+let storageTest = require("../data/storage.json");
 class Storage {
   constructor() {
     let local = window.localStorage.getItem("trips");
