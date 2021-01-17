@@ -45,6 +45,9 @@ https://triplanning.herokuapp.com/
 
 ## Hint:
 for testing you can use this ENV variables:
+
 geonames_username=allania7med11
+
 pixabay_key=19567548-48950bdae503b2a524be5bed1
+
 weatherbit_key=e3a59723b7d844f59d43c10815ea6787
