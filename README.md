@@ -40,6 +40,8 @@ then open localhost:8080 to view application.
 5.To test run:
 npm run test
 
+## Deployment Link
+https://triplanning.herokuapp.com/
 
 ## Hint:
 for testing you can use this ENV variables:
