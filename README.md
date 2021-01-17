@@ -40,6 +40,7 @@ then open localhost:8080 to view application.
 5.To test run:
 npm run test
 
+
 ## Hint:
 for testing you can use this ENV variables:
 geonames_username=allania7med11
