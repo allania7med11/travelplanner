@@ -3,16 +3,15 @@
 **Version 1.0.0**
 
 this website application will make trip planning more fun and easy
-with many feature to help you any time you want:
+with many feature such as:
 
-*get images to your distinations in any place in the world
+*getting images to your distinations in any place in the world
 
-*get day to day infos about temperatue, precipitation ,wind speed during your trip
+*getting day to day infos about temperatue, precipitation ,wind speed during your trip
 
-*remind yourself how many days to start the trip , how many days you already spent on it and even how many days since you finish your adventure
+*reminding yourself how many days to start the trip , how many days you already spent on it and even how many days since you finish your adventure
 
-*save your trips to get all the infos you need later even when you don't 
-have any connection 
+*saving your trips to get all the infos you need later even when you are offline
 
 
 ---
