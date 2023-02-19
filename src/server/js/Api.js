@@ -46,10 +46,15 @@ class Api {
       );
       let response = await fetch(fullUrl);
       let results = await response.json();
+      if (!("data" in results)){
+        throw results
+      }
+      debugger
       let data = results.data;
       if (daysToStart > 0) {
         data = data.slice(daysToStart);
       }
+      debugger
       return data.map(cv => fields.reduce((acc,field) => {
         acc[field] = cv[field]
         return acc
