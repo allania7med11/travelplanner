@@ -26,9 +26,12 @@ with many feature such as:
 ## Follow the instructions to start the project:
 
 1.add .env file with your API Keys link envExemple.It should look like this:
-geonames_username=your_geonames_username
-pixabay_key=your_pixabay_key
-weatherbit_key=your_weatherbit_key
+### from https://www.geonames.org/
+    geonames_username=your_geonames_username
+### from https://pixabay.com/api/docs/
+    pixabay_key=your_pixabay_key
+### from https://www.weatherbit.io/
+    weatherbit_key=your_weatherbit_key
 
 2.create node_module:
 npm install 
@@ -45,12 +48,3 @@ npm run test
 
 ## Deployment Link
 https://triplanning.herokuapp.com/
-
-## Hint:
-for testing you can use this ENV variables:
-
-geonames_username=allania7med11
-
-pixabay_key=19567548-48950bdae503b2a524be5bed1
-
-weatherbit_key=e3a59723b7d844f59d43c10815ea6787
