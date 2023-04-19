@@ -105,7 +105,8 @@ class Charts {
     let dom = document.getElementById("myChart");
     if(typeof(dom) != 'undefined' && dom != null){
       var ctx = document.getElementById("myChart").getContext("2d");
-      var chart = new this.constructor(ctx, this.chartData()[this.display]);
+      var myChart = new Chart(ctx, this.chartData()[this.display]);
+      myChart.render();
     }
   }
 }

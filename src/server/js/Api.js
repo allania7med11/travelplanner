@@ -27,7 +27,7 @@ class Api {
       let results = await response.json();
       return results["geonames"][0];
     } catch (error) {
-      console.log("error", error);
+      console.log(`Error: ${fullUrl}`, error);
       return false;
     }
   }
@@ -49,18 +49,16 @@ class Api {
       if (!("data" in results)){
         throw results
       }
-      debugger
       let data = results.data;
       if (daysToStart > 0) {
         data = data.slice(daysToStart);
       }
-      debugger
       return data.map(cv => fields.reduce((acc,field) => {
         acc[field] = cv[field]
         return acc
       },{}))
     } catch (error) {
-      console.log("error", error);
+      console.log(`Error: ${fullUrl}`, error);
       return false;
     }
   }
