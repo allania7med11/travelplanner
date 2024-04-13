@@ -13,5 +13,3 @@ COPY . /client
 EXPOSE 3000
 # start the app
 ENTRYPOINT ["sh", "./run.sh"]
-CMD ["dev", "3000"]
-
